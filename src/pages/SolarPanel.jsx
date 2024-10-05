@@ -1,0 +1,56 @@
+import React from 'react';
+import { IoIosArrowBack } from "react-icons/io";
+import { SlOptionsVertical } from "react-icons/sl";
+import { FaSolarPanel } from "react-icons/fa";
+import { BsDash } from "react-icons/bs";
+
+const SolarPanel = () => {
+    return (
+        <div>
+            {/* Header Section */}
+            <div className='m-2 border border-black flex justify-between h-24'>
+                <div className='flex items-center'>
+                    <IoIosArrowBack className='' />
+                </div>
+
+                <div className='flex items-center'>
+                    <div className='font-bold'>Solar Panel</div>
+                </div>
+
+                <div className='flex items-center'>
+                    <SlOptionsVertical />
+                </div>
+            </div>
+
+            {/* Energy Output Section */}
+            <div className='flex justify-center min-h-52 w-full items-center'>
+                <div className='flex font-bold text-8xl ml-6'>
+                    <h1>1500</h1>
+                    <span className='ml-1 text-4xl'>W</span>
+                </div>
+            </div>
+
+            {/* Controls Section */}
+            <div className='border flex justify-between'>
+                <div className='p-7 text-5xl'>
+                    <BsDash />
+                </div>
+                <div className='p-7 text-3xl mr-4'>
+                    <h1>Power</h1>
+                </div>
+                <div className='p-7 text-5xl'>
+                    <h1>+</h1>
+                </div>
+            </div>
+
+            {/* Image Section */}
+            <div className='flex justify-center'>
+                <div className='m-7'>
+                    <FaSolarPanel className='text-6xl' />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default SolarPanel;

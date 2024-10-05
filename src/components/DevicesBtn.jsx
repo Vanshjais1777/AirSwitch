@@ -1,13 +1,11 @@
 import React from 'react'
-import { Link, Router } from 'react-router-dom'
 
-const DevicesBtn = (img, txt) => {
+const DevicesBtn = ({ img, txt }) => {
     return (
-        <button className='p-3 m-2'>
+        <button className='p-2 m-2 font-semibold '>
             <img src={img} alt="" />
             {txt}
         </button>
-
     )
 }
 
