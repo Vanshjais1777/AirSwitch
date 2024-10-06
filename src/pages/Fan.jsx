@@ -1,56 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowBack } from "react-icons/io";
 import { SlOptionsVertical } from "react-icons/sl";
-import { FaFan } from "react-icons/fa"; // Fan icon for the device
-import { BsDash } from "react-icons/bs";
+import { FaFan } from "react-icons/fa"; // Fan icon
+import { useNavigate } from 'react-router-dom';
+import { BsDash } from 'react-icons/bs';
 
-const FanOption = () => {
+const Fan = () => {
+  const [isOn, setIsOn] = useState(false); // State to manage Fan's on/off status
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/"); // Navigate back to Home
+  };
+
+  const toggleFan = () => {
+    setIsOn(!isOn); // Toggle the Fan's state
+  };
+
   return (
-    <div className='bg-gradient-to-b from-blue-300 to-blue-100 p-4 rounded-lg shadow-lg'>
+    <div className='bg-gradient-to-br from-purple-500 to-blue-600 min-h-svh flex flex-col'>
       {/* Header Section */}
-      <div className='m-2 border border-gray-300 rounded-lg flex justify-between items-center h-24 p-4 bg-white shadow-sm'>
-        <div className='flex items-center text-gray-700'>
-          <IoIosArrowBack className='text-2xl cursor-pointer hover:text-blue-600 transition duration-200' />
-        </div>
+      <div className='flex justify-between items-center p-4 border-b border-gray-300 bg-white shadow-md'>
+        <button onClick={handleBack} className='text-gray-700 hover:text-blue-600 transition-colors'>
+          <IoIosArrowBack className='text-2xl' />
+        </button>
+        <h1 className='font-bold text-xl'>Fan</h1>
+        <SlOptionsVertical className='text-gray-700 hover:text-blue-600 transition-colors text-2xl' />
+      </div>
 
-        <div className='flex items-center text-gray-700'>
-          <div className='font-bold text-xl'>Fan</div>
-        </div>
-
-        <div className='flex items-center text-gray-700'>
-          <SlOptionsVertical className='text-2xl cursor-pointer hover:text-blue-600 transition duration-200' />
+      {/* Fan Control Section */}
+      <div className='flex justify-center items-center h-72'>
+        <div className='flex font-bold text-8xl text-white'>
+          <h1>{isOn ? "On" : "Off"}</h1>
+          <FaFan className='ml-2 text-4xl text-blue-300' />
         </div>
       </div>
 
-      {/* Fan Speed Section */}
-      <div className='flex justify-center min-h-52 w-full items-center'>
-        <div className='flex font-bold text-8xl'>
-          <h1>3</h1> {/* Fan speed level */}
-          <FaFan className='ml-1 text-4xl text-blue-600 animate-spin' /> {/* Fan icon with spin animation */}
-        </div>
-      </div>
-
-      {/* Fan Speed Control Section */}
       <div className='border flex justify-between bg-white p-4 rounded-lg shadow-md'>
-        <div className='p-7 text-5xl text-blue-500 flex items-center justify-center cursor-pointer hover:bg-blue-100 rounded-full transition duration-300'>
+        <div className='text-5xl text-blue-500 flex items-center justify-center cursor-pointer hover:bg-blue-100 rounded-full p-2 transition'>
           <BsDash />
         </div>
-        <div className='p-7 text-3xl text-gray-800 flex items-center justify-center'>
+        <div className='text-3xl text-gray-800 flex items-center justify-center'>
           <h1>Speed</h1>
         </div>
-        <div className='p-7 text-5xl text-blue-500 flex items-center justify-center cursor-pointer hover:bg-blue-100 rounded-full transition duration-300'>
+        <div className='text-5xl text-blue-500 flex items-center justify-center cursor-pointer hover:bg-blue-100 rounded-full p-2 transition'>
           <h1>+</h1>
         </div>
       </div>
 
-      {/* Power Button Section */}
+      {/* Toggle Button Section */}
       <div className='flex justify-center'>
-        <div className='m-7'>
-          <img className='w-24 h-24 hover:scale-110 transition-transform duration-300' src="src/assets/power-on.png" alt="Power Button" />
-        </div>
+        <button
+          onClick={toggleFan}
+          className={`py-2 px-4 rounded-full mt-32 size-28 font-bold text-white transition-colors text-2xl ${isOn ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'}`}>
+          {isOn ? "Fan On" : "Fan Off"}
+        </button>
       </div>
     </div>
   );
 }
 
-export default FanOption;
+export default Fan;

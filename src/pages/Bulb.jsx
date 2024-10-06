@@ -1,55 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowBack } from "react-icons/io";
 import { SlOptionsVertical } from "react-icons/sl";
 import { FaLightbulb } from "react-icons/fa"; // Bulb icon
-import { BsDash } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+import { BsDash } from 'react-icons/bs';
 
-const BulbOption = () => {
+const Bulb = () => {
+  const [isOn, setIsOn] = useState(false); // State to manage Bulb's on/off status
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate("/"); // Navigate back to Home
+  };
+
+  const toggleBulb = () => {
+    setIsOn(!isOn); // Toggle the Bulb's state
+  };
+
   return (
-    <div className='bg-gradient-to-b from-yellow-300 to-yellow-100 p-4 rounded-lg shadow-lg'>
+    <div className='bg-gradient-to-br from-yellow-300 to-yellow-600 min-h-svh flex flex-col'>
       {/* Header Section */}
-      <div className='m-2 border border-gray-300 rounded-lg flex justify-between items-center h-24 p-4 bg-white shadow-sm'>
-        <div className='flex items-center text-gray-700'>
-          <IoIosArrowBack className='text-2xl cursor-pointer hover:text-yellow-600' />
-        </div>
+      <div className='flex justify-between items-center p-4 border-b border-gray-300 bg-white shadow-md'>
+        <button onClick={handleBack} className='text-gray-700 hover:text-yellow-600 transition-colors'>
+          <IoIosArrowBack className='text-2xl' />
+        </button>
+        <h1 className='font-bold text-xl'>Bulb</h1>
+        <SlOptionsVertical className='text-gray-700 hover:text-yellow-600 transition-colors text-2xl' />
+      </div>
 
-        <div className='flex items-center text-gray-700'>
-          <div className='font-bold text-xl'>Bulb</div>
-        </div>
-
-        <div className='flex items-center text-gray-700'>
-          <SlOptionsVertical className='text-2xl cursor-pointer hover:text-yellow-600' />
+      {/* Bulb Control Section */}
+      <div className='flex justify-center items-center h-72'>
+        <div className='flex font-bold text-8xl text-white'>
+          <h1>{isOn ? "On" : "Off"}</h1>
+          <FaLightbulb className='ml-2 text-4xl text-yellow-300' />
         </div>
       </div>
 
-      {/* Bulb Status Section */}
-      <div className='flex justify-center min-h-52 w-full items-center'>
-        <div className='flex font-bold text-8xl ml-6'>
-          <FaLightbulb className='text-yellow-500' /> {/* Yellow bulb for "on" state */}
-        </div>
-      </div>
-
-      {/* On/Off Control Section */}
-      <div className='border flex justify-between bg-white p-4 rounded-lg shadow-md'>
-        <div className='p-7 text-5xl text-yellow-500 flex items-center justify-center cursor-pointer hover:bg-yellow-200 rounded-full transition'>
-          <BsDash />
-        </div>
-        <div className='p-7 text-3xl text-gray-800 flex items-center justify-center'>
-          <h1>Power</h1>
-        </div>
-        <div className='p-7 text-5xl text-yellow-500 flex items-center justify-center cursor-pointer hover:bg-yellow-200 rounded-full transition'>
-          <h1>+</h1>
-        </div>
-      </div>
-
-      {/* Power Button */}
+      {/* Toggle Button Section */}
       <div className='flex justify-center'>
-        <div className='m-7'>
-          <img className='w-24 h-24' src="src/assets/power-on.png" alt="Power Button" />
-        </div>
+        <button
+          onClick={toggleBulb}
+          className={`py-2 px-4 rounded-full mt-32 size-28 font-bold text-white transition-colors text-2xl ${isOn ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'}`}>
+          {isOn ? "Bulb On" : "Bulb Off"}
+        </button>
       </div>
     </div>
   );
 }
 
-export default BulbOption;
+export default Bulb;

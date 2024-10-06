@@ -1,56 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IoIosArrowBack } from "react-icons/io";
 import { SlOptionsVertical } from "react-icons/sl";
-import { MdTv } from "react-icons/md";
-import { BsDash } from "react-icons/bs";
+import { FaTv } from "react-icons/fa6"; // TV icon
+import { useNavigate } from 'react-router-dom';
 
 const Tv = () => {
-  return (
-    <div>
-      {/* Header Section */}
-      <div className='m-2 border border-black flex justify-between h-24'>
-        <div className='flex items-center'>
-          <IoIosArrowBack className='' />
-        </div>
+    const [isOn, setIsOn] = useState(false);
+    const navigate = useNavigate();
 
-        <div className='flex items-center'>
-          <div className='font-bold'>TV</div>
-        </div>
+    const handleBack = () => {
+        navigate("/");
+    };
 
-        <div className='flex items-center'>
-          <SlOptionsVertical />
-        </div>
-      </div>
+    const toggleTv = () => {
+        setIsOn(!isOn);
+    };
 
-      {/* Volume Section */}
-      <div className='flex justify-center min-h-52 w-full items-center'>
-        <div className='flex font-bold text-8xl ml-6'>
-          <h1>50</h1>
-          <span className='ml-1 text-4xl'>%</span>
-        </div>
-      </div>
+    return (
+        <div className='bg-gradient-to-br from-blue-500 to-indigo-600 min-h-svh flex flex-col'>
+            {/* Header Section */}
+            <div className='flex justify-between items-center p-4 border-b border-gray-300 bg-white shadow-md'>
+                <button onClick={handleBack} className='text-gray-700 hover:text-blue-600 transition-colors'>
+                    <IoIosArrowBack className='text-2xl' />
+                </button>
+                <h1 className='font-bold text-xl'>TV</h1>
+                <SlOptionsVertical className='text-gray-700 hover:text-blue-600 transition-colors text-2xl' />
+            </div>
 
-      {/* Controls Section */}
-      <div className='border flex justify-between'>
-        <div className='p-7 text-5xl'>
-          <BsDash />
-        </div>
-        <div className='p-7 text-3xl mr-4'>
-          <h1>Volume</h1>
-        </div>
-        <div className='p-7 text-5xl'>
-          <h1>+</h1>
-        </div>
-      </div>
+            {/* TV Screen Section */}
+            <div className='flex justify-center items-center h-96'>
+                <div className='flex font-bold text-8xl text-white animate-fade-in'>
+                    <FaTv className={`ml-2 text-8xl ${isOn ? 'text-green-500' : 'text-gray-400'}`} />
+                </div>
+            </div>
 
-      {/* TV Icon Section */}
-      <div className='flex justify-center'>
-        <div className='m-7'>
-          <MdTv className='text-6xl' />
+            {/* On/Off Toggle Button */}
+            <div className='flex justify-center mb-4'>
+                <button
+                    onClick={toggleTv}
+                    className={`size-24 transform transition-transform py-2 px-2 rounded-full font-bold text-white 
+                        ${isOn ? 'bg-green-500 hover:bg-green-600' : 'bg-red-500 hover:bg-red-600'} transition-colors`}
+                >
+                    {isOn ? "Turn Off" : "Turn On"}
+                </button>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Tv;

@@ -21,9 +21,9 @@ const App = () => {
           <Route path='/tv' element={<Tv />}></Route>
           <Route path='/fan' element={<Fan />}></Route>
           <Route path='/camera' element={<Camera />}></Route>
-          <Route path='/watercooler' element={<WaterCooler />}></Route>
+          <Route path='/wcooler' element={<WaterCooler />}></Route>
           <Route path='/projector' element={<Projector />}></Route>
-          <Route path='/solarpanel' element={<SolarPanel />}></Route>
+          <Route path='/solar' element={<SolarPanel />}></Route>
           <Route path='/generator' element={<Generator />}></Route>
           <Route path='/bulb' element={<Bulb />}></Route>
         </Routes>

@@ -17,7 +17,7 @@ const Ac = () => {
   };
 
   return (
-    <div className='bg-gradient-to-br from-purple-500 to-blue-600 min-h-screen flex flex-col'>
+    <div className='bg-gradient-to-br from-purple-500 to-blue-600 min-h-svh flex flex-col'>
       {/* Header Section */}
       <div className='flex justify-between items-center p-4 border-b border-gray-300 bg-white shadow-md'>
         <button onClick={handleBack} className='text-gray-700 hover:text-blue-600 transition-colors'>

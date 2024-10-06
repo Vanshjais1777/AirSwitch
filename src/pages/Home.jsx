@@ -36,7 +36,7 @@ const Home = () => {
     }
 
     return (
-        <div className='bg-gradient-to-br from-purple-500 to-blue-600 min-h-screen flex flex-col justify-center items-center'>
+        <div className='bg-gradient-to-br from-purple-500 to-blue-600 h-svh flex flex-col justify-center items-center overflow-hidden'>
             {visibleLogo ? (
                 <div className='flex justify-center items-center h-screen transition-opacity duration-1000'>
                     <Logo />
@@ -44,26 +44,26 @@ const Home = () => {
             ) : null}
 
             {visibleGrid ? (
-                <div className='m-3 flex flex-col justify-center items-center bg-white border border-gray-300 shadow-lg rounded-lg p-4 transition-opacity duration-1000'>
-                    <h1 className='font-bold text-5xl mb-10 text-gray-800 animate-fade-in'>
+                <div className='m-3 pb-8 py-5 flex flex-col justify-center items-center bg-gradient-to-tl from-white via-gray-300 to-gray-400 border border-gray-300 shadow-lg rounded-lg p-3 transition-opacity duration-1000'>
+                    <h1 className='font-bold text-5xl mb-10 mt-3 text-gray-700 bg-blue-200 p-4 rounded-lg animate-fade-in'>
                         IR REMOTE
                     </h1>
-                    <div className='grid grid-cols-3 grid-rows-3 gap-6'>
+                    <div className='grid grid-cols-3 grid-rows-3 gap-3 h-full'>
                         {/* Device Buttons */}
                         {[
                             { icon: <TbAirConditioning className='text-4xl text-purple-600' />, txt: "AC" },
                             { icon: <FaTv className='text-4xl text-red-600' />, txt: "TV" },
                             { icon: <FaFan className='text-4xl text-blue-500' />, txt: "FAN" },
                             { icon: <IoCamera className='text-4xl text-pink-600' />, txt: "CAMERA" },
-                            { icon: <GiCooler className='text-4xl text-teal-500' />, txt: "WATERCOOLER" },
+                            { icon: <GiCooler className='text-4xl text-teal-500' />, txt: "WCOOLER" },
                             { icon: <LuProjector className='text-4xl text-yellow-500' />, txt: "PROJECTOR" },
-                            { icon: <GiSolarPower className='text-4xl text-green-500' />, txt: "SOLAR PANEL" },
+                            { icon: <GiSolarPower className='text-4xl text-green-500' />, txt: "SOLAR" },
                             { icon: <GiPowerGenerator className='text-4xl text-orange-500' />, txt: "GENERATOR" },
                             { icon: <FaLightbulb className='text-4xl text-yellow-300' />, txt: "BULB" },
                         ].map(({ icon, txt }, index) => (
                             <div
                                 key={index}
-                                className='flex flex-col justify-center items-center cursor-pointer hover:scale-105 duration-300 bg-gradient-to-r from-indigo-300 to-blue-300 p-4 rounded-lg shadow-md hover:shadow-xl transform transition-all'
+                                className='flex flex-col justify-center items-center cursor-pointer hover:scale-105 duration-300 bg-gradient-to-r from-indigo-300 to-blue-300 p-4 rounded-lg shadow-md hover:shadow-xl transform transition-all h-36'
                                 onClick={() => goToAc(txt.toLowerCase())}
                             >
                                 {icon}
