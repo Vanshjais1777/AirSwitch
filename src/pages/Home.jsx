@@ -45,8 +45,8 @@ const Home = () => {
 
             {visibleGrid ? (
                 <div className='m-3 pb-8 py-5 flex flex-col justify-center items-center bg-gradient-to-tl from-white via-gray-300 to-gray-400 border border-gray-300 shadow-lg rounded-lg p-3 transition-opacity duration-1000'>
-                    <h1 className='font-bold text-5xl mb-10 mt-3 text-gray-700 bg-blue-200 p-4 rounded-lg animate-fade-in'>
-                        IR REMOTE
+                    <h1 className='font-bold text-5xl mb-10 mt-3 text-gray-800 bg-blue-100 p-4 rounded-lg animate-fade-in'>
+                        Air Switch
                     </h1>
                     <div className='grid grid-cols-3 grid-rows-3 gap-3 h-full'>
                         {/* Device Buttons */}
