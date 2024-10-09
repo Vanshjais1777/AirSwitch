@@ -10,6 +10,8 @@ import Projector from './pages/Projector';
 import SolarPanel from './pages/SolarPanel';
 import Generator from './pages/Generator';
 import Bulb from './pages/Bulb';
+import SIgnUp from './pages/SIgnUp';
+import Login from './pages/Login';
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
           <Route path='/solar' element={<SolarPanel />}></Route>
           <Route path='/generator' element={<Generator />}></Route>
           <Route path='/bulb' element={<Bulb />}></Route>
+          <Route path='/signup' element={<SIgnUp />}></Route>
+          <Route path='/login' element={<Login />}></Route>
         </Routes>
       </Router>
     </div>
