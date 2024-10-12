@@ -5,8 +5,8 @@ import { IoCamera } from 'react-icons/io5';
 import { GiCooler, GiSolarPower, GiPowerGenerator } from 'react-icons/gi';
 import { LuProjector } from 'react-icons/lu';
 import HamburgerMenu from '../components/HamburgerMenu';
-import DevicesBtn from '../components/DevicesBtn'; // Make sure this component is properly defined
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { Link } from 'react-router-dom'; // Import Link
+import DevicesBtn from '../components/DevicesBtn';
 
 const Switches = () => {
     const [visibleGrid, setVisibleGrid] = useState(false);
@@ -14,16 +14,13 @@ const Switches = () => {
         const storedFirstTime = localStorage.getItem('isFirstTime');
         return storedFirstTime === null ? true : false;
     });
-    const navigate = useNavigate();
 
     useEffect(() => {
         setVisibleGrid(true);
-        return () => clearTimeout(timer); // Cleanup timer
     }, []);
 
     return (
         <div className='bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 h-svh flex flex-col justify-center items-center overflow-hidden'>
-            {/* Show grid if user is signed up and logo animation is over */}
             {visibleGrid && !showLogo && (
                 <div className='m-3 pb-8 py-5 flex flex-col justify-center items-center bg-gradient-to-tl from-white via-gray-300 to-gray-400 border border-gray-300 shadow-lg rounded-lg p-3 transition-opacity duration-1000'>
                     <div className='flex items-center mb-4 justify-around space-x-24'>
@@ -48,14 +45,14 @@ const Switches = () => {
                             { icon: <GiPowerGenerator className='text-4xl text-orange-500' />, txt: "GENERATOR" },
                             { icon: <FaLightbulb className='text-4xl text-yellow-300' />, txt: "BULB" },
                         ].map(({ icon, txt }, index) => (
-                            <div
+                            <Link
                                 key={index}
+                                to={`/${txt.toLowerCase()}`}
                                 className='flex flex-col justify-center items-center cursor-pointer hover:scale-105 duration-300 bg-gradient-to-r from-indigo-300 to-blue-300 p-4 rounded-lg shadow-md hover:shadow-xl transform transition-all h-36'
-                                onClick={() => navigate(`/${txt.toLowerCase()}`)}
                             >
                                 {icon}
                                 <DevicesBtn txt={txt} />
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 </div>
