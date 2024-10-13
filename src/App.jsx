@@ -12,6 +12,7 @@ import Generator from './pages/Generator';
 import Bulb from './pages/Bulb';
 import SignUp from './pages/SIgnUp';
 import Login from './pages/Login';
+import ForgetPassword from './pages/ForgetPassword';
 import { AuthProvider } from './context/AuthContext';
 import Masters from './pages/Masters';
 import Boards from './pages/Boards';
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/bulb" element={<Bulb />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/forgetpassword" element={<ForgetPassword />} />
           <Route path="/masters" element={<Masters />} />
           <Route path="/boards" element={<Boards />} />
           <Route path="/switches" element={<Switches />} />
